@@ -1,6 +1,8 @@
 #-*- coding=utf8 -*-
 import subprocess
 
+"""Run this script when login the windows.
+"""
 if __name__ == '__main__':
-    # 启动Xshell
+    # Start Xshell.
     subprocess.Popen(r'"D:\Program Files\NetSarang\Xshell 4\Xshell.exe"')
