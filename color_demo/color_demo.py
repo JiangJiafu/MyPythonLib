@@ -4,7 +4,7 @@ class Bcolors:
     OKBLUE = '\033[94m'
     OK = '\033[02m'        # Green
     WARNING = '\033[0;33m' # Yellow
-    FAIL = '\033[0;31m'    # Read
+    FAIL = '\033[0;31m'    # Red
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
