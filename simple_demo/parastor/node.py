@@ -27,6 +27,29 @@ class MGRNode(Node):
     def get_desc(self):
         return "This is MGR node."
 
+class ClientNode(Node):
+    """Client Node"""
+  
+    def __init__(self, nodeid):
+        super(ClientNode, self).__init__('Client', nodeid)
+
+    def __cmp__(self, node):
+        return cmp(self.nodetype, node.nodetype)
+
+    def __lt__(self, node):
+        if self.nodetype == node.nodetype:
+            return self.nodeid < node.nodeid
+        return self.nodetype < node.nodetype
+
+    def __gt__(self, node):
+        if self.nodetype == node.nodetype:                                      
+            return self.nodeid > node.nodeid                                    
+        return self.nodetype > node.nodetype                                          
+
+    def __eq__(self, node):
+        return self.nodetype == node.nodetype and self.nodeid == node.nodeid
+        
+
 
 
     

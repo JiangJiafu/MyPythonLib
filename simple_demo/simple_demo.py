@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import parastor.node
+# from parastor.node import Node
 
 def empty_func():
     """Do nothing"""
@@ -34,6 +35,9 @@ def string_demo2():
         print '%s start with su' % str1
     if str1.find('go'):
         print '%s contains go' % str1
+
+    print "The %(foo)s is %(bar)i." % {'foo': 'answer', 'bar':42}
+
 
 def list_demo():
     """How to use list."""
@@ -115,7 +119,95 @@ def class_demo():
     mgrnode = parastor.node.MGRNode('MGR', 1)
     print mgrnode.get_desc()
 
-   
+def oper_reload_demo():
+    """"Operation reload demo."""
+
+    print '\noper_reload_demo'
+    node_a = parastor.node.MGRNode('MGR', 1)
+    node_b = parastor.node.ClientNode(1)
+    node_c = parastor.node.ClientNode(2)
+    node_d = parastor.node.ClientNode(2)
+
+    print node_a != node_b
+    print node_a > node_c
+    print node_b < node_c
+    print node_c == node_d
+
+def basic_ctrl_flow_demo():
+    
+    print '\nctrl_flow demo'
+    list_a = ['s', 'u', 'g', 'o', 'n']
+    for c in list_a:
+        print c,
+    print
+
+    for i in range(0, 5):
+        print i
+
+    i = 2
+    while i > 0:
+        print i
+        i = i - 1
+    
+    a = 3 
+    b = 3
+    if a == b == 3:
+        print 'a == b == 3'
+    x = 5
+    print  1 < x <10
+    print x < 10 < x * 10 < 100
+    print 10 > x <= 9
+    print 5 == x > 4
+    
+    a = ['a', 'b', 'c', 'd']
+    for index, item in enumerate(a):
+        print index, item
+
+
+def error_catch_demo():
+    
+    print '\ncatch_demo'
+    try:
+        raise Exception('This is an Exception.')
+    except Exception as e:
+        print e
+    finally:
+        print 'no matter what happens, this line will be printed.'
+
+
+def print_args(function):
+    def wrapper(*args, **kwargs):
+        print 'Arguments:', args, kwargs
+        return function(*args, **kwargs)
+    return wrapper
+
+@print_args
+def write(text):
+    print text
+
+def decorator_demo():
+
+    print '\ndecorator_demo'
+    write('hello')
+
+def for_else_demo():
+    
+    print '\nfor_else_demo'
+    foo = [1, 2 , 3, 4, 5]
+    found = False
+    for i in foo:
+        if i == 0:
+            found = True
+            break
+    if not found: 
+        print("i was never 0")
+
+    # another way
+    for i in foo:
+        if i == 0:
+            break
+    else:
+        print("i was never 0")
 
 def main():
     empty_func()
@@ -129,6 +221,11 @@ def main():
     dict_demo2()
     fun2(1, 2, 'World', True, 3, 4, 5, 6, name='jiangjiafu', company='sugon')
     class_demo()
+    oper_reload_demo()
+    basic_ctrl_flow_demo()
+    error_catch_demo()
+    decorator_demo()
+    for_else_demo()
 
 if __name__ == '__main__':
     main()
